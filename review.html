@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Food Finder - Review</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+                    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+                                   <link rel="shortcut icon" href="ico/favicon.png">
+
+    <style>
+      #upload {
+        display:block; margin-top:0em; 
+        font-family: "Segoe UI", Tahoma, Helvetica, freesans, sans-serif;
+        font-size: 90%;
+        color: #333;
+      }
+      #review { 
+        display: block; 
+        padding: 1em; 
+        margin:1em 0;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+      }
+      #upload fieldset, #review-section fieldset {
+        display: block;
+        -webkit-margin-start: 2px;
+        -webkit-margin-end: 2px;
+        -webkit-padding-before: 0.35em;
+        -webkit-padding-start: 0.75em;
+        -webkit-padding-end: 0.75em;
+        -webkit-padding-after: 0.625em;
+        border: 2px groove threedface;
+        border-image-source: initial;
+        border-image-slice: initial;
+        border-image-width: initial;
+        border-image-outset: initial;
+        border-image-repeat: initial;
+        min-width: -webkit-min-content;
+      }
+
+      #upload legend, #review-section legend {
+        width: initial !important;
+        font-weight: bold;
+        color: #333;
+        display: block;
+        -webkit-padding-start: 2px;
+        -webkit-padding-end: 2px;
+        border: none;
+        border-image-source: initial;
+        border-image-slice: initial;
+        border-image-width: initial;
+        border-image-outset: initial;
+        border-image-repeat: initial;
+      }
+
+      #filedrag {
+        display: none;
+        font-weight: bold;
+        text-align: center;
+        padding: 1em 0;
+        margin: 1em 0;
+        color: #555;
+        border: 2px dashed #555;
+        border-radius: 7px;
+        cursor: default;
+      }
+
+      #filedrag.hover
+      {
+        color: #f00;
+        border-color: #f00;
+        border-style: solid;
+        box-shadow: inset 0 3px 4px #888;
+      }
+
+      #messages
+      {
+        padding: 0 10px;
+        margin: 1em 0;
+        border: 1px solid #999;
+      }
+
+      #progress p
+      {
+        display: block;
+        width: 240px;
+        padding: 2px 5px;
+        margin: 2px 0;
+        border: 1px inset #446;
+        border-radius: 5px;
+        background: #eee url("progress.png") 100% 0 repeat-y;
+      }
+
+      #progress p.success
+      {
+        background: #0c0 none 0 0 no-repeat;
+      }
+
+      #progress p.failed
+      {
+        background: #c00 none 0 0 no-repeat;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">Food Finder</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="search.html">Search</a></li>
+              <li class="active"><a href="review.html">Review</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <img src="img/placeholder.jpg" />
+            <ul class="nav nav-list">
+              <li><h3>[Restaurant]</h3></li>
+              <li>Location: Irvine, CA</li>
+              <li>Reviews: 24</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="span9">
+          <div class="hero-unit">
+            <h2>Food Finder Reviews</h2>
+            <div>
+              [Image]
+            </div>
+          </div>
+
+          <form class="form-horizontal">
+
+            <div class="control-group">
+              <label class="control-label" for="inputIcon">Overall Rating</label>
+              <div class="controls" data-id="1">
+                <a id="rating-star1-1" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 1</a>
+                <a id="rating-star1-2" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 2</a>
+                <a id="rating-star1-3" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 3</a>
+                <a id="rating-star1-4" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 4</a>
+                <a id="rating-star1-5" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 5</a>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputIcon">Food Quality Rating</label>
+              <div class="controls" data-id="2">
+                <a id="rating-star2-1" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 1</a>
+                <a id="rating-star2-2" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 2</a>
+                <a id="rating-star2-3" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 3</a>
+                <a id="rating-star2-4" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 4</a>
+                <a id="rating-star2-5" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 5</a>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputIcon">Service Quality Rating</label>
+              <div class="controls" data-id="3">
+                <a id="rating-star3-1" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 1</a>
+                <a id="rating-star3-2" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 2</a>
+                <a id="rating-star3-3" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 3</a>
+                <a id="rating-star3-4" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 4</a>
+                <a id="rating-star3-5" class="btn btn-mini rating-star" href="#"><i class="icon-star"></i> 5</a>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputIcon">Price</label>
+              <div class="controls">
+                <select id="price" class="span2" style="min-width:200px">
+                  <option>Inexpensive <$15</option>
+                  <option>Moderate $15-29</option>
+                  <option>Indulgent $30-49</option>
+                  <option>Extravagant $50+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputIcon">Noise</label>
+              <div class="controls">
+                <button class="btn" type="button" data-toggle="button">Low</button>
+                <button class="btn" type="button" data-toggle="button">Moderate</button>
+                <button class="btn" type="button" data-toggle="button">Loud</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <label class="control-label" for="inputIcon">Suitable for</label>
+              <div class="controls">
+                <label class="checkbox inline">
+                  <input type="checkbox" id="inlineCheckbox1" value="option1"> Dates
+                </label>
+                <label class="checkbox inline">
+                  <input type="checkbox" id="inlineCheckbox2" value="option2"> Family
+                </label>
+                <label class="checkbox inline">
+                  <input type="checkbox" id="inlineCheckbox2" value="option2"> Individuals
+                </label>
+              </div>
+            </div>
+
+            <!--<div class="control-group">
+              <label class="control-label" for="inputIcon"></label>
+              <div class="controls">
+                <div class="input-append">
+                  <a class="btn" href="#"><i class="icon-camera"></i> Take Picture</a>
+                  <input name="uploadfile" type="file" />
+                </div>
+              </div>
+            </div>-->
+
+            <div id="review-section" class="control-group">
+              <fieldset>
+              <legend>Write Your Review Here</legend>
+              <textarea id="review" rows="6"></textarea>
+              </fieldset>
+            </div>
+          </form>
+
+            <!-- HTML5 File Upload -->
+            <div class="control-group">
+              <form id="upload" action="Server/Upload.php" method="POST" enctype="multipart/form-data">
+                <fieldset>
+                <legend>Multimedia File Upload</legend>
+                <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+                <div>
+                  <label for="fileselect">Files to upload:</label>
+                  <input type="file" id="fileselect" name="fileselect[]" multiple="multiple" />
+                  <div id="filedrag">or drop files here</div>
+                </div>
+                <div id="submitbutton">
+                  <button type="submit">Upload Files</button>
+                </div>
+                </fieldset>
+              </form>
+
+              <div id="progress"></div>
+
+              <div id="messages">
+              <p>Status Messages</p>
+              </div>
+            </div><!-- End HTML5 File Upload -->
+
+<!-- Audio / Video -->
+<!--            <div class="control-group">
+              <label class="control-label" for="inputIcon"></label>
+              <div class="controls">
+                <div class="input-append">
+                  <a class="btn" href="#"><i class="icon-play-circle"></i> Record Audio</a>
+                </div>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="inputIcon"></label>
+              <div class="controls">
+                <div class="input-append">
+                  <a class="btn" href="#"><i class="icon-facetime-video"></i> Take Video</a>
+                </div>
+              </div>
+            </div>-->
+
+            
+
+            <div class="control-group">
+              <label class="control-label" for="inputIcon"></label>
+              <div class="controls">
+                <button id="submit" class="btn btn-primary btn-large">Submit</button>
+              </div>
+            </div>
+        </div>
+
+      </div>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap-transition.js"></script>
+    <script src="js/bootstrap-alert.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/bootstrap-tooltip.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <script src="js/bootstrap-button.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+    <script src="js/bootstrap-carousel.js"></script>
+    <script src="js/bootstrap-typeahead.js"></script>
+	
+    <script src="js/filedrag.js"></script>
+
+	<script>
+
+	// Star Rating System
+  (function() {
+    $('.rating-star').on('click', function(e) {
+      e.preventDefault();
+      var starId = $(this).parent().attr('data-id');
+      
+      // Clear all highlighted stars first
+      for (var i = 0; i <= $('.rating-star').length; i++) {
+        $('#rating-star' + starId + '-' + i).removeClass('btn-success');
+      }
+      
+      var id = $(this).attr('id');
+      
+      // Start Star
+      var start = 1;
+      
+      var positionOfStarClicked = id[id.length - 1];
+
+      while (start <= positionOfStarClicked) {
+        $('#rating-star' + starId + '-' + start).addClass('btn-success');
+        start++;
+      }
+    });
+  })();
+
+  function generateUrl() {
+    return (new Date()).getTime();
+  }
+
+  (function() {
+    // Submit Request
+    $('#submit').on('click', function(e) {
+      e.preventDefault();
+
+      // Gather the Form Data and Send to Server to Insert into Database
+      var jsonRequest = { 
+        method: 'AddReview',
+        restaurantId: -1,
+        price: $('#price option:selected').text(),
+        noise: 5,
+        rating: $('.rating-star.btn-success').length,
+        suitable: [],
+        imageURL: generateUrl(),
+        review: $('#review').val()
+      };
+
+      console.log(jsonRequest);
+
+      $.ajax({
+        url: 'RestAPI.php',
+        type:'POST',
+        dataType: 'json',
+        data: jsonRequest,
+        success: function(data) {
+          console.log(data);
+          if (data.Result === "Success") { 
+            alert("You have submitted successfully!");
+            
+          } else {
+            alert("Submission Failed");
+          }
+        }
+      });
+    });
+  })();
+	</script>
+
+  </body>
+</html>

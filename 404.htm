@@ -1,0 +1,93 @@
+
+<html><head><title>Page not found</title>
+<meta name="robots" content="noindex,nofollow">
+
+<script language=javascript>
+<!--
+
+// The three functions are general read, set and delete cookie-functions - 
+// copied from this page: http://www.echoecho.com/jscookies02.htm
+
+// The rest of the javascript is specificallye made for 404-files on casesensitive servers 
+// it converts the url til lowercase to see if the reason for the 404 error is one ore more uppercase letters
+// *** NB! - make sure all folder and file names on the website are written in lower case ***
+// Copyright: Forbrugerportalen, 2004
+// http://www.forbrugerportalen.dk/sider/casesensitive404-english.htm
+
+
+
+varURL=top.location.href;
+
+
+function getCookie(NameOfCookie)
+{
+
+if (document.cookie.length > 0)
+{
+  begin = document.cookie.indexOf(NameOfCookie+"="); 
+
+  if (begin != -1) 
+  {
+    begin += NameOfCookie.length+1; 
+    end = document.cookie.indexOf(";", begin);
+    if (end == -1) end = document.cookie.length;
+    return unescape(document.cookie.substring(begin, end)); 
+  }
+}
+else
+{
+return null;
+}
+}
+
+
+
+function setCookie(NameOfCookie, value, expiredays) 
+{
+  var ExpireDate = new Date ();
+  ExpireDate.setTime(ExpireDate.getTime() + (expiredays * 24 * 3600 * 1000));
+  document.cookie = NameOfCookie + "=" + escape(value) + ((expiredays == null) ? "" : "; expires=" + ExpireDate.toGMTString());
+}
+
+
+
+function delCookie (NameOfCookie) 
+{
+  if (getCookie(NameOfCookie)) 
+  {
+    document.cookie = NameOfCookie + "=" + "; expires=Thu, 01-Jan-70 00:00:01 GMT";
+  }
+}
+
+
+
+strLowcase=getCookie('lowcase');
+
+if (strLowcase!=null)
+      // If the cookie exists, the adress has been converted to lowercase and still results in a 404-error 
+
+{
+   document.write("The page <b>" + varURL + "</b> was not found.<br><br>");
+  document.write("<a href='/' target='_top'>To homepage...</a><br><br>");
+  delCookie('lowcase');
+}
+
+else 
+      // If the cookie doesn't exist, the URL is converted to lowercase 
+{
+  setCookie('lowcase',"on",(10/86400));
+      // The cookie is set to expire in 10 seconds
+      // - because anothere problem with casesensitive URL's can arise again in the same session
+  varURLsmaa=varURL.toLowerCase();
+  top.location=varURLsmaa;
+}
+
+
+-->
+</script>
+
+</head>
+<body>
+&nbsp;
+
+</body></html>

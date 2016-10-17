@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>GVamp Notes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="css/docs.css" rel="stylesheet">
+	<link href="css/todos.css" rel="stylesheet">
+	<link href="css/fb.css" rel="stylesheet">
+    <link href="js/google-code-prettify/prettify.css" rel="stylesheet">
+
+	
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="ico/apple-touch-icon-57-precomposed.png">
+
+  </head>
+
+  <body data-spy="scroll" data-target=".bs-docs-sidebar" style="padding:0;">
+
+<!-- Subhead
+================================================== -->
+<header class="jumbotron subhead">
+  <div class="container">
+	<h1>GVamp Note v1.0</h1>
+
+    <p class="lead">For previous versions, check 
+		<a href="MyNoteRepo">here</a>.</p>
+  </div>
+</header>
+
+  <div class="container">
+
+    <!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span12">
+	  
+	<div class="pull-right" style="margin-top:14px;">
+		<a href="#" data-toggle="tab" onclick="promptLogin()" id="fb-login" class="login-button">
+			<span>Login</span>
+		</a>
+	</div>
+	
+        <!-- Tabs
+        ================================================== -->
+        <section id="tabs">
+            <ul id="myTab" class="nav nav-tabs">
+              
+              <li class="active"><a href="#todos" data-toggle="tab">To Dos</a></li>
+			  <li><a href="#mynote" data-toggle="tab">My Notes</a></li>
+			  <li><a href="#scheduler" data-toggle="tab">Schedule</a></li>
+
+            </ul>
+				
+            <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade in active" id="todos">
+                <form class="form-horizontal">
+					<legend>To-Dos</legend>
+					<input type="text" id="input-to-do" class="span12" placeholder="Press Enter When Done" title="Press Enter When Done"/>
+				</form>
+				<ul id="todo-list">
+				
+				</ul>
+				
+              </div>
+			  <div class="tab-pane fade" id="mynote">
+                <p>
+					<div class="accordion" id="accordion2">
+						<div class="accordion-group">
+						  <div class="accordion-heading">
+							<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+								Add New Notes
+							</a>
+						  </div>
+						  <div id="collapseOne" class="accordion-body collapse" style="height: 0px; ">
+							<div class="accordion-inner">
+								<fieldset class="schedulerFs rightCol">
+									<legend>Begin Here... Add Notes and check back for it Later!</legend>
+									<input type="text" placeholder="Title" id="new-note-title" />
+									<textarea name="content" id="new-note-content" class="textarea-to-learn" style="height:350px;width:95%;"></textarea>
+									<button id="add-new-note" class="btn btn-primary">Add New Note</button>
+								</fieldset>
+							</div>
+						  </div>
+						</div>
+						<div class="accordion-group">
+						  <div class="accordion-heading">
+							<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+								View All Notes
+							</a>
+						  </div>
+						  <div id="collapseTwo" class="accordion-body in collapse">
+							<div class="accordion-inner">
+								<section id="all-notes"></section>
+							</div>
+						  </div>
+						</div>
+					  </div>
+				</p>
+              </div>
+              <div class="tab-pane fade" id="scheduler">
+				<p>
+					<div class="centerPanel">
+						<fieldset class="schedulerFs leftCol">
+							<legend> Schedule</legend>
+							<textarea name="content" id="schedule-text" class="textarea" editable="false" style="height:400px;width:95%;">
+								Thursday: 
+								1) Login Functionality 
+								2) Note Repository Viewhttp://localhost/MyNote/ToDos
+							</textarea>
+							<button id="update-schedule-text" name="update" value="Update" class="btn btn-primary">Save Schedule</button>
+						</fieldset>
+					
+						<fieldset class="schedulerFs rightCol">
+							<legend>To-Learn List</legend>
+							<textarea name="content" id="to-learn-text" class="textarea" editable="false" style="height:400px;width:95%;">
+								Thursday: 
+								1) Login Functionality 
+								2) Note Repository Viewhttp://localhost/MyNote/ToDos
+							</textarea>
+							<button id="update-to-learn-text" name="update" value="Update" class="btn btn-primary">Save To Learn</button>
+						</fieldset>
+					</div>
+				</p>
+              </div>
+              <div class="tab-pane fade" id="login">
+                <p>
+					<form class="form-horizontal">
+						<legend>Login</legend>
+						<div class="control-group">
+							<label class="control-label" for="login-username">Username:</label>
+							<div class="controls">
+								<input type="text" id="login-username" placeholder="Username"/>
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="login-password">Password:</label>
+							<div class="controls">
+								<input type="password" id="login-password" placeholder="Password"/>
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<label class="checkbox">
+									<input type="checkbox"> Remember me
+								</label>
+								<button id="sign-in" class="btn">Sign in</button>
+							</div>
+						</div>
+					</form>
+				</p>
+              </div>
+            </div>
+		</section>
+
+	  </div><!--End Span12-->
+
+  </div><!--End Row-->
+  
+  </div><!--End Container-->
+
+
+
+    <!-- Footer
+    ================================================== -->
+    <footer class="footer">
+      <div class="container">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>GVamp Note v1.0.  Powered and built on the <a href="https://github.com/twitter/bootstrap" target="_blank">Bootstrap Framework</a>.  Site developed by <a href="http://garrettw.com" target="_blank">Garrett Wong</a>.</p>
+      </div>
+    </footer>
+
+	<div id="modal-loading" style="position:absolute;width:100%;height:100%;display:none;top:0;left:0;background:#f2f2f2;opacity:0.45;-moz-opacity:0.45;filter:alpha(opacity=45);">
+		<img id="modal-loading-img" src="img/ajax-blue-snake.gif" style="position:fixed;top:35%;left:40%;/>
+	</div>
+
+	<!-- Facebook Modal -->
+	
+	  <div id="fb-root"></div>
+	  
+	  <div id="header" style="display:none;">
+		<div id="back-link" onclick="openPage('root')"><div id="back">&lt; Back</div></div>
+		<div id="title">Title</div>
+
+		<div id="right-block">
+		  <div class="show_when_not_connected">
+			<a onclick="promptLogin()" class="login-button"> 
+			  <span>Login</span>
+			</a>
+		  </div>
+		</div>
+	  </div>
+  
+	<div class="show_when_not_connected" style="display:none">
+		<div id="login_button" class="button" onclick="promptLogin()" />Login using Facebook</div>
+	</div>
+	<div class="show_when_connected" style="display:none">
+		<div id="login_button" class="button" onclick="logout()" />Logout</div>
+		<div id="login_button" class="button" onclick="uninstallApp()" />Uninstall app</div>
+	</div>
+	
+	
+	<!-- End FB Modal-->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/google-code-prettify/prettify.js"></script>
+    <script src="js/bootstrap-transition.js"></script>
+    <script src="js/bootstrap-alert.js"></script>
+    <script src="js/bootstrap-modal.js"></script>
+    <script src="js/bootstrap-dropdown.js"></script>
+    <script src="js/bootstrap-scrollspy.js"></script>
+    <script src="js/bootstrap-tab.js"></script>
+    <script src="js/bootstrap-tooltip.js"></script>
+    <script src="js/bootstrap-popover.js"></script>
+    <script src="js/bootstrap-button.js"></script>
+    <script src="js/bootstrap-collapse.js"></script>
+    <script src="js/bootstrap-carousel.js"></script>
+    <script src="js/bootstrap-typeahead.js"></script>
+    <script src="js/bootstrap-affix.js"></script>
+    <script src="js/application.js"></script>
+
+	<script src="js/underscore.js"></script>
+	<script src="js/backbone/backbone.js"></script>
+	<script src="js/backbone/backbone-localstorage.js"></script>
+	
+	<script src="js/fb/_config.js"></script>
+	<!--<script src="js/fb/ui.js"></script>-->
+	<script src="js/fb/auth.js"></script>
+	<script src="js/fb/feed.js"></script>
+	<script src="js/fb/graph_api.js"></script>
+	<script src="js/fb/requests.js"></script>
+	<script src="js/fb/credits.js"></script>
+	
+	<script src="js/mynote.js"></script>
+
+  </body>
+</html>

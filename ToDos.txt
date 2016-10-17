@@ -1,0 +1,26 @@
+1. Faceted Search
+
+2. Audio Processing (use sox with CLI utility to process and categorize sound samples)
+
+3. Database Linking
+
+4. Page Ranking - finished-ish (call searchHits(searchStr) from tfidf.js)
+
+5. File Upload - (garrett, you finished this right?)
+
+6. Image Processing - I'd say this is out of the scope of this project; can write it off as a 'if we go further' in the report
+
+7. In-Depth Search from Food
+
+8. Improved A/C
+if (document.activeElement.id === 'searchAc') {
+
+}
+
+
+un: jon@garrettw.com
+pw: cs212
+
+https://host139.hostmonster.com:2083/3rdparty/phpMyAdmin/index.php?input_username=garretu2
+un: garretu2_cs212
+pw: cs212cs212
